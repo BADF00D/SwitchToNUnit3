@@ -48,6 +48,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncVoid\AsyncVoidSpec.cs" />
+    <Compile Include="AsyncVoid\If_Analyser_runs_on_non_async_test.cs" />
+    <Compile Include="AsyncVoid\If_Analyser_runs_on_test_with_async_generic_Task.cs" />
+    <Compile Include="AsyncVoid\If_Analyser_runs_on_test_with_async_Task.cs" />
+    <Compile Include="AsyncVoid\If_Analyser_runs_on_test_with_async_void.cs" />
     <Compile Include="Dummy.cs" />
     <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttribute_with_exception.cs" />
     <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttribute_without_exception.cs" />

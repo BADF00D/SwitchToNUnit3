@@ -38,7 +38,7 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
         }
 
         [Test]
-        public void Then_there_should_be_one_Diagnostics() {
+        public void Then_there_should_be_no_Diagnostics() {
             _diagnostics.Count().Should().Be(0);
         }
     }
