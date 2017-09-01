@@ -17,5 +17,9 @@ namespace SwitchToNUnit3.Extensions
         public static void ReportThrowsIsDeprecated(this SyntaxNodeAnalysisContext context) {
             context.ReportDiagnostic(Diagnostic.Create(Rules.ThrowsDeprecatedRule, context.Node.GetLocation()));
         }
+
+        public static void ReportAsyncVoidIsDeprecated(this SyntaxNodeAnalysisContext context) {
+            context.ReportDiagnostic(Diagnostic.Create(Rules.AsyncVoidIsDeprectedRule, context.Node.GetLocation()));
+        }
     }
 }

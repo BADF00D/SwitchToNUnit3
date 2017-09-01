@@ -60,5 +60,21 @@ namespace SwitchToNUnit3
             Category,
             DiagnosticSeverity.Error, true,
             Description2);
+
+        private static readonly LocalizableString MessageFormat4 =
+            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat3), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString Description4 =
+            new LocalizableResourceString(nameof(Resources.AnalyzerDescription3), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor AsyncVoidIsDeprectedRule = new DiagnosticDescriptor(
+            DiagnosticIds.AsyncVoidIsDeprected,
+            Title,
+            MessageFormat4,
+            Category,
+            DiagnosticSeverity.Error, true,
+            Description4);
     }
 }
