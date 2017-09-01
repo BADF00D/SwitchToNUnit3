@@ -14,11 +14,32 @@ namespace SwitchToNUnit3
         
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics
-            => ImmutableArray.Create(Rules.ExpectedExceptionDeprecatedRule, Rules.ReferencedTestCasesSourceIsNotStatic);
+            => ImmutableArray.Create(
+                Rules.ExpectedExceptionDeprecatedRule, 
+                Rules.ReferencedTestCasesSourceIsNotStatic,
+                Rules.ThrowsDeprecatedRule);
 
         public override void Initialize(AnalysisContext context)
         {
             context.RegisterSyntaxNodeAction(AnalyseAttribute, SyntaxKind.Attribute);
+            context.RegisterSyntaxNodeAction(AnalyseInvocationExpression, SyntaxKind.SimpleMemberAccessExpression);
+        }
+
+        private static void AnalyseInvocationExpression(SyntaxNodeAnalysisContext context) {
+            var node = context.Node as MemberAccessExpressionSyntax;
+            if (node == null) return;
+
+            var symbol_info = context.SemanticModel.GetSymbolInfo(node);
+            var symbol = symbol_info.Symbol as IMethodSymbol;
+
+            var type = symbol?.ReturnType as INamedTypeSymbol;
+            var fullname = type?.GetFullNameWithNameSpace();
+            if (fullname != "NUnit.Framework.TestCaseData") return;
+            var ids = node.DescendantNodes().OfType<IdentifierNameSyntax>().ToArray();
+            var throws = ids.LastOrDefault(id => id.Identifier.Text == "Throws");
+            if (throws != null) {
+                context.ReportThrowsIsDeprecated();
+            }
         }
 
         private void AnalyseAttribute(SyntaxNodeAnalysisContext context)

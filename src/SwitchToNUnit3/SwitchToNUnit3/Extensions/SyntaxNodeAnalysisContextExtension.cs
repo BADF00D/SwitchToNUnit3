@@ -13,5 +13,9 @@ namespace SwitchToNUnit3.Extensions
         public static void ReportReferencedTestCaseSourceHasToBeStatic(this SyntaxNodeAnalysisContext context) {
             context.ReportDiagnostic(Diagnostic.Create(Rules.ReferencedTestCasesSourceIsNotStatic, context.Node.GetLocation()));
         }
+
+        public static void ReportThrowsIsDeprecated(this SyntaxNodeAnalysisContext context) {
+            context.ReportDiagnostic(Diagnostic.Create(Rules.ThrowsDeprecatedRule, context.Node.GetLocation()));
+        }
     }
 }

@@ -43,5 +43,22 @@ namespace SwitchToNUnit3
             Category,
             DiagnosticSeverity.Error, true,
             Description3);
+
+
+        private static readonly LocalizableString MessageFormat2 =
+            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat3), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString Description2 =
+            new LocalizableResourceString(nameof(Resources.AnalyzerDescription3), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor ThrowsDeprecatedRule = new DiagnosticDescriptor(
+            DiagnosticIds.ThrowsIsDeprecated,
+            Title,
+            MessageFormat2,
+            Category,
+            DiagnosticSeverity.Error, true,
+            Description2);
     }
 }
