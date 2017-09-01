@@ -52,11 +52,15 @@
     <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttribute_with_exception.cs" />
     <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttribute_without_exception.cs" />
     <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttributeSpec.cs" />
+    <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue2.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue3.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue1.cs" />
     <Compile Include="IssueTest\IssueSpec.cs" />
     <Compile Include="MyHelper.cs" />
     <Compile Include="Spec.cs" />
+    <Compile Include="TestCaseDataThrows\If_TestCaseDataThrows_with_Type_is_used.cs" />
+    <Compile Include="TestCaseDataThrows\If_TestCaseDataThrows_with_string_is_used.cs" />
+    <Compile Include="TestCaseDataThrows\TestCaseDataThrowsSpec.cs" />
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_static_field.cs" />
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_static_method.cs" />
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_non_static_method.cs" />
