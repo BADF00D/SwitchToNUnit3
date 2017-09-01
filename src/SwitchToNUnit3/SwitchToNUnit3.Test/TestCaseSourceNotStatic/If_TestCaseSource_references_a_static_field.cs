@@ -13,6 +13,7 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
         using NUnit.Framework;
         namespace Testnamespace {
             public class SomeTest {
+                [TestCaseSource(" + "Tests" + @")]
                 [TestCaseSource(nameof(Tests))]
                 public void SomeMethod() { }
 

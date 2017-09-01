@@ -9,14 +9,15 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
     internal class If_TestCaseSource_references_a_non_static_field: TestCaseSourceNotStaticSpec
     {
         private const string Code = @"
-        using System;
+                using System;
         using NUnit.Framework;
         namespace Testnamespace {
             public class SomeTest {
+                [TestCaseSource(" + "Tests" + @")]
                 [TestCaseSource(nameof(Tests))]
                 public void SomeMethod() { }
 
-                public  TestCaseData[] Tests = new [] {new TestCaseData() };
+                public TestCaseData[] Tests = new[] { new TestCaseData() };
 
             }
         }
