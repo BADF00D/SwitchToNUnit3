@@ -49,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dummy.cs" />
-    <Compile Include="IssueTest\Issue1Test.cs" />
+    <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttribute_with_exception.cs" />
+    <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttribute_without_exception.cs" />
+    <Compile Include="ExpectedExceptionAttribute\ExpectedExceptionAttributeSpec.cs" />
+    <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue1.cs" />
     <Compile Include="IssueTest\IssueSpec.cs" />
     <Compile Include="MyHelper.cs" />
     <Compile Include="Spec.cs" />
