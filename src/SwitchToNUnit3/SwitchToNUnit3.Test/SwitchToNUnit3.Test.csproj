@@ -48,6 +48,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IssueTest\Issue1Test.cs" />
+    <Compile Include="IssueTest\IssueSpec.cs" />
     <Compile Include="MyHelper.cs" />
     <Compile Include="Spec.cs" />
     <Compile Include="UnitTests.cs" />
@@ -71,9 +73,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IssueTest\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
