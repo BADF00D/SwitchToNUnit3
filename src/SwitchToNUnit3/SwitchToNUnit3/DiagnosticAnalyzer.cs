@@ -11,46 +11,10 @@ namespace SwitchToNUnit3
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class SwitchToNUnit3Analyzer : DiagnosticAnalyzer
     {
-        private const string Category = "Obsolete";
-
-        private static readonly LocalizableString Title = new LocalizableResourceString(
-            nameof(Resources.AnalyzerTitle), Resources.ResourceManager, typeof (Resources));
-
-        private static readonly LocalizableString MessageFormat =
-            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat), Resources.ResourceManager,
-                typeof (Resources));
-
-        private static readonly LocalizableString MessageFormat3 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat3), Resources.ResourceManager,
-                typeof(Resources));
-
-        private static readonly LocalizableString Description =
-            new LocalizableResourceString(nameof(Resources.AnalyzerDescription), Resources.ResourceManager,
-                typeof (Resources));
-
-        private static readonly LocalizableString Description3 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerDescription3), Resources.ResourceManager,
-                typeof(Resources));
-
-        private static readonly DiagnosticDescriptor ExpectedExceptionDeprecatedRule = new DiagnosticDescriptor(
-            DiagnosticIds.ExpectedExceptionAttributeisDeprecated,
-            Title,
-            MessageFormat,
-            Category,
-            DiagnosticSeverity.Error,
-            true,
-            Description);
-
-        private static readonly DiagnosticDescriptor ReferencedTestCasesSourceIsNotStatic = new DiagnosticDescriptor(
-            DiagnosticIds.ReferencedTestCaseSourceHasToBeStatic, 
-            Title, 
-            MessageFormat3, 
-            Category, 
-            DiagnosticSeverity.Error, true, 
-            Description3);
+        
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics
-            => ImmutableArray.Create(ExpectedExceptionDeprecatedRule, ReferencedTestCasesSourceIsNotStatic);
+            => ImmutableArray.Create(Rules.ExpectedExceptionDeprecatedRule, Rules.ReferencedTestCasesSourceIsNotStatic);
 
         public override void Initialize(AnalysisContext context)
         {
@@ -63,7 +27,7 @@ namespace SwitchToNUnit3
             if (node == null) return;
             if (node.IsExpectedExceptionAttribute())
             {
-                context.ReportDiagnostic(Diagnostic.Create(ExpectedExceptionDeprecatedRule, node.GetLocation()));
+                context.ReportExpectedExceptionIsDeprecated();
             }
             else
             {
@@ -91,7 +55,7 @@ namespace SwitchToNUnit3
                 var symbol = context.SemanticModel.GetDeclaredSymbol(property);
                 if (symbol.IsStatic) return;
 
-                context.ReportDiagnostic(Diagnostic.Create(ReferencedTestCasesSourceIsNotStatic, argument.GetLocation()));
+                context.ReportReferencedTestCaseSourceHasToBeStatic();
                 return;
             }
             var method = containing_class
@@ -101,7 +65,7 @@ namespace SwitchToNUnit3
             if (method != null) {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(method);
                 if (symbol.IsStatic) return;
-                context.ReportDiagnostic(Diagnostic.Create(ReferencedTestCasesSourceIsNotStatic, argument.GetLocation()));
+                context.ReportReferencedTestCaseSourceHasToBeStatic();
                 return;
             }
             var field = containing_class
@@ -112,7 +76,7 @@ namespace SwitchToNUnit3
             if (field != null) {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(field);
                 if (symbol.IsStatic) return;
-                context.ReportDiagnostic(Diagnostic.Create(ReferencedTestCasesSourceIsNotStatic, argument.GetLocation()));
+                context.ReportReferencedTestCaseSourceHasToBeStatic();
                 return;
             }
         }
