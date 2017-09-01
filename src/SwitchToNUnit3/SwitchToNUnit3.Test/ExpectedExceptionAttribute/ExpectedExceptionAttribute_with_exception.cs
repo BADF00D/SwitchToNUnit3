@@ -31,7 +31,7 @@ namespace SwitchToNUnit3.Test.ExpectedExceptionAttribute
         }
 
         [Test]
-        public void Then_there_should_be_one_Diagnostics_for_STN001()
+        public void Then_there_should_be_one_Diagnostics()
         {
             _diagnostics.Length.Should().Be(1);
 

@@ -42,7 +42,7 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
         }
 
         [Test]
-        public void Then_there_should_be_one_Diagnostics_for_STN002() {
+        public void Then_there_should_be_one_Diagnostics() {
             _diagnostics.Count().Should().Be(0);
         }
     }
