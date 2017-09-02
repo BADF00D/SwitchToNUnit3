@@ -2,23 +2,22 @@
 using Microsoft.CodeAnalysis;
 using NUnit.Framework;
 
-namespace SwitchToNUnit3.Test.ExpectedExceptionAttribute
+namespace SwitchToNUnit3.Test.Attribute
 {
     [TestFixture]
-    internal class ExpectedExceptionAttribute_with_exception : ExpectedExceptionAttributeSpec
+    internal class TestFixtureTearDownAttribute_with_exception : AttributeSpec
     {
         private const string Code = @"
         using System;
         using NUnit.Framework;
-        namespace Testnamespace{
-            public class SomeTest{
-                [ExpectedException(typeof(Exception))]
-                public void SomeMethod(){}
+        namespace Testnamespace {
+            public class SomeTest {
+                [TestFixtureSetUp]
+                public async void SomeMethod() { }
             }
         }
         namespace NUnit.Framework {
-            public class ExpectedExceptionAttribute : Attribute{
-                public ExpectedExceptionAttribute(Type type) {}
+            public class TestFixtureTearDownAttribute : Attribute {
             }
         }";
 
@@ -35,7 +34,7 @@ namespace SwitchToNUnit3.Test.ExpectedExceptionAttribute
         {
             _diagnostics.Length.Should().Be(1);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.ExpectedExceptionAttributeisDeprecated);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.TestFixtureSetUpAttributeIsDeprecated);
         }
     }
 }

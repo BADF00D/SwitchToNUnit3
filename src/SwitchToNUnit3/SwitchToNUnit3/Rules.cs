@@ -18,7 +18,7 @@ namespace SwitchToNUnit3
                 typeof(Resources));
 
         public static readonly DiagnosticDescriptor ExpectedExceptionDeprecatedRule = new DiagnosticDescriptor(
-            DiagnosticIds.ExpectedExceptionAttributeisDeprecated,
+            DiagnosticIds.ExpectedExceptionAttributeIsDeprecated,
             Title,
             MessageFormat,
             Category,

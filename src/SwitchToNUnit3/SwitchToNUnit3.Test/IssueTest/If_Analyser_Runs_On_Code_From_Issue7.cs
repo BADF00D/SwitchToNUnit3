@@ -1,24 +1,24 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using NUnit.Framework;
 
-namespace SwitchToNUnit3.Test.ExpectedExceptionAttribute
+namespace SwitchToNUnit3.Test.IssueTest
 {
     [TestFixture]
-    internal class ExpectedExceptionAttribute_without_exception : ExpectedExceptionAttributeSpec
+    internal class If_analyser_runs_on_code_from_issue7 : IssueSpec
     {
         private const string Code = @"
         using System;
         using NUnit.Framework;
-        namespace Testnamespace{
-            public class SomeTest{
-                [ExpectedException]
-                public void SomeMethod(){}
+        namespace Testnamespace {
+            public class SomeTest {
+                [TestFixtureSetUp]
+                public async void SomeMethod() { }
             }
         }
         namespace NUnit.Framework {
-            public class ExpectedExceptionAttribute : Attribute{
-                public ExpectedExceptionAttribute() {}
+            public class TestFixtureTearDownAttribute : Attribute {
             }
         }";
 
@@ -35,7 +35,7 @@ namespace SwitchToNUnit3.Test.ExpectedExceptionAttribute
         {
             _diagnostics.Length.Should().Be(1);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.ExpectedExceptionAttributeisDeprecated);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.TestFixtureTearDownAttributeIsDeprecated);
         }
     }
 }

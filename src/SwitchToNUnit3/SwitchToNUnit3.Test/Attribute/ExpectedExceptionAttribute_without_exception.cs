@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using NUnit.Framework;
 
-namespace SwitchToNUnit3.Test.IssueTest {
+namespace SwitchToNUnit3.Test.Attribute
+{
     [TestFixture]
-    internal class If_analyser_runs_on_code_from_issue1 : IssueSpec {
+    internal class ExpectedExceptionAttribute_without_exception : AttributeSpec
+    {
         private const string Code = @"
         using System;
         using NUnit.Framework;
@@ -25,16 +25,17 @@ namespace SwitchToNUnit3.Test.IssueTest {
         private Diagnostic[] _diagnostics;
 
 
-        protected override void BecauseOf() {
+        protected override void BecauseOf()
+        {
             _diagnostics = MyHelper.RunAnalyser(Code, Sut);
         }
 
         [Test]
         public void Then_there_should_be_one_Diagnostics()
         {
-            _diagnostics.Count().Should().Be(1);
+            _diagnostics.Length.Should().Be(1);
 
             _diagnostics[0].Id.Should().Be(DiagnosticIds.ExpectedExceptionAttributeIsDeprecated);
-        } 
+        }
     }
 }
