@@ -14,7 +14,9 @@ namespace SwitchToNUnit3
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics
             => ImmutableArray.Create(
                 Rules.ExpectedExceptionDeprecatedRule,
-                Rules.ReferencedTestCasesSourceIsNotStatic,
+                Rules.TestFixtureSetUpAttributeDeprectedRule,
+                Rules.TestFixtureTearDownAttributeDeprecatedRule,
+                Rules.ReferencedTestCasesSourceIsNotStaticRule,
                 Rules.ThrowsDeprecatedRule,
                 Rules.AsyncVoidIsDeprectedRule);
 
@@ -41,9 +43,9 @@ namespace SwitchToNUnit3
             {
                 return;
             }
-            var method_symbol = context.SemanticModel.GetDeclaredSymbol(method);
-            if (!method_symbol.IsAsync) return;
-            if (method_symbol.ReturnsVoid)
+            var methodSymbol = context.SemanticModel.GetDeclaredSymbol(method);
+            if (!methodSymbol.IsAsync) return;
+            if (methodSymbol.ReturnsVoid)
             {
                 context.ReportAsyncVoidIsDeprecated();
             }
@@ -54,8 +56,8 @@ namespace SwitchToNUnit3
             var node = context.Node as MemberAccessExpressionSyntax;
             if (node == null) return;
 
-            var symbol_info = context.SemanticModel.GetSymbolInfo(node);
-            var symbol = symbol_info.Symbol as IMethodSymbol;
+            var symbolInfo = context.SemanticModel.GetSymbolInfo(node);
+            var symbol = symbolInfo.Symbol as IMethodSymbol;
 
             var type = symbol?.ReturnType as INamedTypeSymbol;
             var fullname = type?.GetFullNameWithNameSpace();
@@ -68,13 +70,14 @@ namespace SwitchToNUnit3
             }
         }
 
-        private void AnalyseAttribute(SyntaxNodeAnalysisContext context)
+        private static void AnalyseAttribute(SyntaxNodeAnalysisContext context)
         {
             var node = context.Node as AttributeSyntax;
             if (node == null) return;
-            if (node.IsExpectedExceptionAttribute())
+            DiagnosticDescriptor deprecatedAttributeDiagnosticId;
+            if (node.TryGetDiagnosticIdForDeprecatedAttribute(out deprecatedAttributeDiagnosticId))
             {
-                context.ReportExpectedExceptionIsDeprecated();
+                context.ReportDiagnostic(Diagnostic.Create(deprecatedAttributeDiagnosticId, node.GetLocation()));
             }
             else
             {
@@ -89,16 +92,16 @@ namespace SwitchToNUnit3
                 .OfType<AttributeArgumentSyntax>()
                 .FirstOrDefault();
             if (argument == null) return;
-            var name_of_testcase_member = GetName(argument);
-            if (string.IsNullOrWhiteSpace(name_of_testcase_member)) return;
+            var nameOfTestcaseMember = GetName(argument);
+            if (string.IsNullOrWhiteSpace(nameOfTestcaseMember)) return;
 
-            var containing_class = node.FindContainingClass();
-            if (containing_class == null) return;
+            var containingClass = node.FindContainingClass();
+            if (containingClass == null) return;
 
-            var property = containing_class
+            var property = containingClass
                 .DescendantNodes()
                 .OfType<PropertyDeclarationSyntax>()
-                .FirstOrDefault(pds => pds.Identifier.Text == name_of_testcase_member);
+                .FirstOrDefault(pds => pds.Identifier.Text == nameOfTestcaseMember);
             if (property != null)
             {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(property);
@@ -107,10 +110,10 @@ namespace SwitchToNUnit3
                 context.ReportReferencedTestCaseSourceHasToBeStatic();
                 return;
             }
-            var method = containing_class
+            var method = containingClass
                 .DescendantNodes()
                 .OfType<MethodDeclarationSyntax>()
-                .FirstOrDefault(mds => mds.Identifier.Text == name_of_testcase_member);
+                .FirstOrDefault(mds => mds.Identifier.Text == nameOfTestcaseMember);
             if (method != null)
             {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(method);
@@ -118,11 +121,11 @@ namespace SwitchToNUnit3
                 context.ReportReferencedTestCaseSourceHasToBeStatic();
                 return;
             }
-            var field = containing_class
+            var field = containingClass
                 .DescendantNodes()
                 .OfType<FieldDeclarationSyntax>()
                 .SelectMany(fds => fds.DescendantNodes().OfType<VariableDeclaratorSyntax>())
-                .FirstOrDefault(vds => vds.Identifier.Text == name_of_testcase_member);
+                .FirstOrDefault(vds => vds.Identifier.Text == nameOfTestcaseMember);
             if (field != null)
             {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(field);

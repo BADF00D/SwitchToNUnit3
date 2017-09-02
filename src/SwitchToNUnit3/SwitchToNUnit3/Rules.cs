@@ -2,79 +2,117 @@
 
 namespace SwitchToNUnit3
 {
-    public class Rules
+    public static class Rules
     {
         private const string Category = "Obsolete";
 
         private static readonly LocalizableString Title = new LocalizableResourceString(
             nameof(Resources.AnalyzerTitle), Resources.ResourceManager, typeof(Resources));
 
-        private static readonly LocalizableString MessageFormat =
-            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat), Resources.ResourceManager,
+
+        private static readonly LocalizableString ExpectedExceptionDeprecatedMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ExpectedExceptionDeprecatedMessageFormat), Resources.ResourceManager,
                 typeof(Resources));
 
-        private static readonly LocalizableString Description =
-            new LocalizableResourceString(nameof(Resources.AnalyzerDescription), Resources.ResourceManager,
+        private static readonly LocalizableString ExpectedExceptionDeprecatedDescription =
+            new LocalizableResourceString(nameof(Resources.ExpectedExceptionDeprecatedDescription), Resources.ResourceManager,
                 typeof(Resources));
 
         public static readonly DiagnosticDescriptor ExpectedExceptionDeprecatedRule = new DiagnosticDescriptor(
             DiagnosticIds.ExpectedExceptionAttributeIsDeprecated,
             Title,
-            MessageFormat,
+            ExpectedExceptionDeprecatedMessageFormat,
             Category,
             DiagnosticSeverity.Error,
             true,
-            Description);
+            ExpectedExceptionDeprecatedDescription);
 
 
-
-        private static readonly LocalizableString MessageFormat3 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat3), Resources.ResourceManager,
+        private static readonly LocalizableString TestFixtureSetUpAttributeDeprecatedMessageFormat =
+            new LocalizableResourceString(nameof(Resources.TestFixtureSetUpAttributeDeprecatedMessageFormat), Resources.ResourceManager,
                 typeof(Resources));
 
-        private static readonly LocalizableString Description3 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerDescription3), Resources.ResourceManager,
+        private static readonly LocalizableString TestFixtureSetUpAttributeDeprecatedDescription =
+            new LocalizableResourceString(nameof(Resources.TestFixtureSetUpAttributeDeprecatedDescription), Resources.ResourceManager,
                 typeof(Resources));
 
-        public static readonly DiagnosticDescriptor ReferencedTestCasesSourceIsNotStatic = new DiagnosticDescriptor(
+        public static readonly DiagnosticDescriptor TestFixtureSetUpAttributeDeprectedRule = new DiagnosticDescriptor(
+            DiagnosticIds.TestFixtureSetUpAttributeIsDeprecated,
+            Title,
+            TestFixtureSetUpAttributeDeprecatedMessageFormat,
+            Category,
+            DiagnosticSeverity.Error,
+            true,
+            TestFixtureSetUpAttributeDeprecatedDescription);
+
+
+
+        private static readonly LocalizableString TestFixtureTearDownAttributeDeprecatedMessageFormat =
+            new LocalizableResourceString(nameof(Resources.TestFixtureTearDownAttributeDeprecatedMessageFormat), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString TestFixtureTearDownAttributeDeprecatedDescription =
+            new LocalizableResourceString(nameof(Resources.TestFixtureTearDownAttributeDeprecatedDescription), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor TestFixtureTearDownAttributeDeprecatedRule = new DiagnosticDescriptor(
+            DiagnosticIds.TestFixtureTearDownAttributeIsDeprecated,
+            Title,
+            TestFixtureTearDownAttributeDeprecatedMessageFormat,
+            Category,
+            DiagnosticSeverity.Error,
+            true,
+            TestFixtureTearDownAttributeDeprecatedDescription);
+
+
+
+        private static readonly LocalizableString ReferencedTestCasesSourceIsNotStaticMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ReferencedTestCasesSourceIsNotStaticMessageFormat), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString ReferencedTestCasesSourceIsNotStaticDescription =
+            new LocalizableResourceString(nameof(Resources.ReferencedTestCasesSourceIsNotStaticDescription), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor ReferencedTestCasesSourceIsNotStaticRule = new DiagnosticDescriptor(
             DiagnosticIds.ReferencedTestCaseSourceHasToBeStatic,
             Title,
-            MessageFormat3,
+            ReferencedTestCasesSourceIsNotStaticMessageFormat,
             Category,
             DiagnosticSeverity.Error, true,
-            Description3);
+            ReferencedTestCasesSourceIsNotStaticDescription);
 
 
-        private static readonly LocalizableString MessageFormat2 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat3), Resources.ResourceManager,
+        private static readonly LocalizableString ThrowsDeprecatedMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ThrowsDeprecatedMessageFormat), Resources.ResourceManager,
                 typeof(Resources));
 
-        private static readonly LocalizableString Description2 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerDescription3), Resources.ResourceManager,
+        private static readonly LocalizableString ThrowsDeprecatedDescription =
+            new LocalizableResourceString(nameof(Resources.ThrowsDeprecatedDescription), Resources.ResourceManager,
                 typeof(Resources));
 
         public static readonly DiagnosticDescriptor ThrowsDeprecatedRule = new DiagnosticDescriptor(
             DiagnosticIds.ThrowsIsDeprecated,
             Title,
-            MessageFormat2,
+            ThrowsDeprecatedMessageFormat,
             Category,
             DiagnosticSeverity.Error, true,
-            Description2);
+            ThrowsDeprecatedDescription);
 
-        private static readonly LocalizableString MessageFormat4 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat3), Resources.ResourceManager,
+        private static readonly LocalizableString AsyncVoidIsDeprectedMessageFormat =
+            new LocalizableResourceString(nameof(Resources.AsyncVoidIsDeprectedMessageFormat), Resources.ResourceManager,
                 typeof(Resources));
 
-        private static readonly LocalizableString Description4 =
-            new LocalizableResourceString(nameof(Resources.AnalyzerDescription3), Resources.ResourceManager,
+        private static readonly LocalizableString AsyncVoidIsDeprectedDescription =
+            new LocalizableResourceString(nameof(Resources.AsyncVoidIsDeprectedDescription), Resources.ResourceManager,
                 typeof(Resources));
 
         public static readonly DiagnosticDescriptor AsyncVoidIsDeprectedRule = new DiagnosticDescriptor(
             DiagnosticIds.AsyncVoidIsDeprected,
             Title,
-            MessageFormat4,
+            AsyncVoidIsDeprectedMessageFormat,
             Category,
             DiagnosticSeverity.Error, true,
-            Description4);
+            AsyncVoidIsDeprectedDescription);
     }
 }

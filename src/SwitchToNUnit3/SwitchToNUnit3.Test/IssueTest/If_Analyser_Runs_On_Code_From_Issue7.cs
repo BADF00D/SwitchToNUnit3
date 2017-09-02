@@ -13,7 +13,7 @@ namespace SwitchToNUnit3.Test.IssueTest
         using NUnit.Framework;
         namespace Testnamespace {
             public class SomeTest {
-                [TestFixtureSetUp]
+                [TestFixtureTearDown]
                 public async void SomeMethod() { }
             }
         }

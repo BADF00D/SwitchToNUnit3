@@ -12,7 +12,7 @@ namespace SwitchToNUnit3.Test.Attribute
         using NUnit.Framework;
         namespace Testnamespace {
             public class SomeTest {
-                [TestFixtureSetUp]
+                [TestFixtureTearDown]
                 public async void SomeMethod() { }
             }
         }
@@ -34,7 +34,7 @@ namespace SwitchToNUnit3.Test.Attribute
         {
             _diagnostics.Length.Should().Be(1);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.TestFixtureSetUpAttributeIsDeprecated);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.TestFixtureTearDownAttributeIsDeprecated);
         }
     }
 }
