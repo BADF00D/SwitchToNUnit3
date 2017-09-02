@@ -4,6 +4,11 @@
     <Identity Id="SwitchToNUnit3.Microsoft.ac360001-3887-452e-8643-96d7cc9f0030" Version="0.1" Language="en-US" Publisher="David Störmer"/>
     <DisplayName>SwitchToNUnit3</DisplayName>
     <Description xml:space="preserve">An extension that notfies you about breaking changes in NUnit3, while working with NUnit2.</Description>
+    <MoreInfo>https://github.com/BADF00D/SwitchToNUnit3</MoreInfo>
+    <License>License.txt</License>
+    <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
+    <Icon>icon.png</Icon>
+    <Tags>NUnit2, NUnit, NUnit3, upgrade, deprecated, roslyn, Testing, Unit Test</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Community" />

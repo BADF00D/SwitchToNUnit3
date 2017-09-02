@@ -1,0 +1,8 @@
+﻿Release 0.1
+* issue #1: Detects obsolete ExpectedExceptionAttribute.
+* issue #2: Detects obsolete TestcaseData.Throws method.
+* issue #3: Detects not static references from TestCasesSrouce.
+* issue #4: Detects async void method that are no longer supported.
+* issue #5: Detects obsolete TestFixtureSetUpAttribute.
+* issue #6: Detects obsolete TestFixtureTearDownAttribute.
+* issue #10: Support for Visual Studio 2017.
