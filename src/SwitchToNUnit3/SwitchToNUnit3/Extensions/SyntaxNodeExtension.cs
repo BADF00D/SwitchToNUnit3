@@ -22,8 +22,6 @@ namespace SwitchToNUnit3.Extensions
 
         private static readonly Dictionary<string, DiagnosticDescriptor> DeprecatedAttributeDiagnostics = new Dictionary<string, DiagnosticDescriptor> {
             ["ExpectedException"] = Rules.ExpectedExceptionDeprecatedRule,
-            ["TestFixtureSetUp"] = Rules.TestFixtureSetUpAttributeDeprectedRule,
-            ["TestFixtureTearDown"] = Rules.TestFixtureTearDownAttributeDeprecatedRule
         };
         /// <summary>
         /// 

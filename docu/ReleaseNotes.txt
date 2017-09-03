@@ -1,4 +1,7 @@
-﻿Release 0.1
+﻿Release 0.2
+* Reverted issue #6 and isuue #7. These attributes got first introduced in NUnit3.
+
+Release 0.1
 * issue #1: Detects obsolete ExpectedExceptionAttribute.
 * issue #2: Detects obsolete TestcaseData.Throws method.
 * issue #3: Detects not static references from TestCasesSrouce.
