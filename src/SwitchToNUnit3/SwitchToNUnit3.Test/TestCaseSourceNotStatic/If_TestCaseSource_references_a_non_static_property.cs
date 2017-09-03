@@ -45,7 +45,7 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
         public void Then_there_should_be_one_Diagnostics() {
             _diagnostics.Count().Should().Be(1);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedTestCaseSourceHasToBeStatic);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedPropertyInTestCaseSourceHasToBeStatic);
         }
     }
 }

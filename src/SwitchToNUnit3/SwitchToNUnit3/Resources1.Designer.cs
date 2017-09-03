@@ -108,18 +108,54 @@ namespace SwitchToNUnit3 {
         /// <summary>
         ///   Looks up a localized string similar to NUnit3 does not support TestCaseSource that are instance members..
         /// </summary>
-        public static string ReferencedTestCasesSourceIsNotStaticDescription {
+        public static string ReferencedFieldInTestCasesSourceIsNotStaticDescription {
             get {
-                return ResourceManager.GetString("ReferencedTestCasesSourceIsNotStaticDescription", resourceCulture);
+                return ResourceManager.GetString("ReferencedFieldInTestCasesSourceIsNotStaticDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Referenced TestCaseSource has to be static.
         /// </summary>
-        public static string ReferencedTestCasesSourceIsNotStaticMessageFormat {
+        public static string ReferencedFieldInTestCasesSourceIsNotStaticMessageFormat {
             get {
-                return ResourceManager.GetString("ReferencedTestCasesSourceIsNotStaticMessageFormat", resourceCulture);
+                return ResourceManager.GetString("ReferencedFieldInTestCasesSourceIsNotStaticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NUnit3 does not support TestCaseSource that are instance members..
+        /// </summary>
+        public static string ReferencedMethodInTestCasesSourceIsNotStaticDescription {
+            get {
+                return ResourceManager.GetString("ReferencedMethodInTestCasesSourceIsNotStaticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Referenced TestCaseSource has to be static.
+        /// </summary>
+        public static string ReferencedMethodInTestCasesSourceIsNotStaticMessageFormat {
+            get {
+                return ResourceManager.GetString("ReferencedMethodInTestCasesSourceIsNotStaticMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NUnit3 does not support TestCaseSource that are instance members..
+        /// </summary>
+        public static string ReferencedPropertyInTestCasesSourceIsNotStaticDescription {
+            get {
+                return ResourceManager.GetString("ReferencedPropertyInTestCasesSourceIsNotStaticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Referenced TestCaseSource has to be static.
+        /// </summary>
+        public static string ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat {
+            get {
+                return ResourceManager.GetString("ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat", resourceCulture);
             }
         }
         
@@ -129,42 +165,6 @@ namespace SwitchToNUnit3 {
         public static string String {
             get {
                 return ResourceManager.GetString("String", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TestFixtureSetUpAttribute is deprecated, use OneTimeSetUp instead..
-        /// </summary>
-        public static string TestFixtureSetUpAttributeDeprecatedDescription {
-            get {
-                return ResourceManager.GetString("TestFixtureSetUpAttributeDeprecatedDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TestFixtureSetUpAttribute is deprecated.
-        /// </summary>
-        public static string TestFixtureSetUpAttributeDeprecatedMessageFormat {
-            get {
-                return ResourceManager.GetString("TestFixtureSetUpAttributeDeprecatedMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TestFixtureTearDownAttribute is deprecated, use OneTimeTearDown instead..
-        /// </summary>
-        public static string TestFixtureTearDownAttributeDeprecatedDescription {
-            get {
-                return ResourceManager.GetString("TestFixtureTearDownAttributeDeprecatedDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TestFixtureTearDownAttribute is deprecated.
-        /// </summary>
-        public static string TestFixtureTearDownAttributeDeprecatedMessageFormat {
-            get {
-                return ResourceManager.GetString("TestFixtureTearDownAttributeDeprecatedMessageFormat", resourceCulture);
             }
         }
         

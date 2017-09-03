@@ -138,28 +138,28 @@
     <value>ExpectedExceptionAttribute is deprecated</value>
     <comment>The format-able message the diagnostic displays.</comment>
   </data>
-  <data name="ReferencedTestCasesSourceIsNotStaticDescription" xml:space="preserve">
-    <value>NUnit3 does not support TestCaseSource that are instance members.</value>
-  </data>
-  <data name="ReferencedTestCasesSourceIsNotStaticMessageFormat" xml:space="preserve">
-    <value>Referenced TestCaseSource has to be static</value>
-  </data>
   <data name="ThrowsDeprecatedMessageFormat" xml:space="preserve">
     <value>Throws is deprecated</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>ThrowsDeprecatedDescription</value>
   </data>
-  <data name="TestFixtureSetUpAttributeDeprecatedDescription" xml:space="preserve">
-    <value>TestFixtureSetUpAttribute is deprecated, use OneTimeSetUp instead.</value>
+  <data name="ReferencedFieldInTestCasesSourceIsNotStaticDescription" xml:space="preserve">
+    <value>NUnit3 does not support TestCaseSource that are instance members.</value>
   </data>
-  <data name="TestFixtureSetUpAttributeDeprecatedMessageFormat" xml:space="preserve">
-    <value>TestFixtureSetUpAttribute is deprecated</value>
+  <data name="ReferencedFieldInTestCasesSourceIsNotStaticMessageFormat" xml:space="preserve">
+    <value>Referenced TestCaseSource has to be static</value>
   </data>
-  <data name="TestFixtureTearDownAttributeDeprecatedDescription" xml:space="preserve">
-    <value>TestFixtureTearDownAttribute is deprecated, use OneTimeTearDown instead.</value>
+  <data name="ReferencedMethodInTestCasesSourceIsNotStaticDescription" xml:space="preserve">
+    <value>NUnit3 does not support TestCaseSource that are instance members.</value>
   </data>
-  <data name="TestFixtureTearDownAttributeDeprecatedMessageFormat" xml:space="preserve">
-    <value>TestFixtureTearDownAttribute is deprecated</value>
+  <data name="ReferencedMethodInTestCasesSourceIsNotStaticMessageFormat" xml:space="preserve">
+    <value>Referenced TestCaseSource has to be static</value>
+  </data>
+  <data name="ReferencedPropertyInTestCasesSourceIsNotStaticDescription" xml:space="preserve">
+    <value>NUnit3 does not support TestCaseSource that are instance members.</value>
+  </data>
+  <data name="ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat" xml:space="preserve">
+    <value>Referenced TestCaseSource has to be static</value>
   </data>
 </root>

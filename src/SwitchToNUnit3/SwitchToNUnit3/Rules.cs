@@ -28,59 +28,55 @@ namespace SwitchToNUnit3
             ExpectedExceptionDeprecatedDescription);
 
 
-        private static readonly LocalizableString TestFixtureSetUpAttributeDeprecatedMessageFormat =
-            new LocalizableResourceString(nameof(Resources.TestFixtureSetUpAttributeDeprecatedMessageFormat), Resources.ResourceManager,
+        private static readonly LocalizableString ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat), Resources.ResourceManager,
                 typeof(Resources));
 
-        private static readonly LocalizableString TestFixtureSetUpAttributeDeprecatedDescription =
-            new LocalizableResourceString(nameof(Resources.TestFixtureSetUpAttributeDeprecatedDescription), Resources.ResourceManager,
+        private static readonly LocalizableString ReferencedPropertyInTestCasesSourceIsNotStaticDescription =
+            new LocalizableResourceString(nameof(Resources.ReferencedPropertyInTestCasesSourceIsNotStaticDescription), Resources.ResourceManager,
                 typeof(Resources));
 
-        public static readonly DiagnosticDescriptor TestFixtureSetUpAttributeDeprectedRule = new DiagnosticDescriptor(
-            DiagnosticIds.TestFixtureSetUpAttributeIsDeprecated,
+        public static readonly DiagnosticDescriptor ReferencedPropertyInTestCasesSourceIsNotStaticRule = new DiagnosticDescriptor(
+            DiagnosticIds.ReferencedPropertyInTestCaseSourceHasToBeStatic,
             Title,
-            TestFixtureSetUpAttributeDeprecatedMessageFormat,
-            Category,
-            DiagnosticSeverity.Error,
-            true,
-            TestFixtureSetUpAttributeDeprecatedDescription);
-
-
-
-        private static readonly LocalizableString TestFixtureTearDownAttributeDeprecatedMessageFormat =
-            new LocalizableResourceString(nameof(Resources.TestFixtureTearDownAttributeDeprecatedMessageFormat), Resources.ResourceManager,
-                typeof(Resources));
-
-        private static readonly LocalizableString TestFixtureTearDownAttributeDeprecatedDescription =
-            new LocalizableResourceString(nameof(Resources.TestFixtureTearDownAttributeDeprecatedDescription), Resources.ResourceManager,
-                typeof(Resources));
-
-        public static readonly DiagnosticDescriptor TestFixtureTearDownAttributeDeprecatedRule = new DiagnosticDescriptor(
-            DiagnosticIds.TestFixtureTearDownAttributeIsDeprecated,
-            Title,
-            TestFixtureTearDownAttributeDeprecatedMessageFormat,
-            Category,
-            DiagnosticSeverity.Error,
-            true,
-            TestFixtureTearDownAttributeDeprecatedDescription);
-
-
-
-        private static readonly LocalizableString ReferencedTestCasesSourceIsNotStaticMessageFormat =
-            new LocalizableResourceString(nameof(Resources.ReferencedTestCasesSourceIsNotStaticMessageFormat), Resources.ResourceManager,
-                typeof(Resources));
-
-        private static readonly LocalizableString ReferencedTestCasesSourceIsNotStaticDescription =
-            new LocalizableResourceString(nameof(Resources.ReferencedTestCasesSourceIsNotStaticDescription), Resources.ResourceManager,
-                typeof(Resources));
-
-        public static readonly DiagnosticDescriptor ReferencedTestCasesSourceIsNotStaticRule = new DiagnosticDescriptor(
-            DiagnosticIds.ReferencedTestCaseSourceHasToBeStatic,
-            Title,
-            ReferencedTestCasesSourceIsNotStaticMessageFormat,
+            ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat,
             Category,
             DiagnosticSeverity.Error, true,
-            ReferencedTestCasesSourceIsNotStaticDescription);
+            ReferencedPropertyInTestCasesSourceIsNotStaticDescription);
+
+
+        private static readonly LocalizableString ReferencedFieldInTestCasesSourceIsNotStaticMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString ReferencedFieldInTestCasesSourceIsNotStaticDescription =
+            new LocalizableResourceString(nameof(Resources.ReferencedFieldInTestCasesSourceIsNotStaticDescription), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor ReferencedFieldInTestCasesSourceIsNotStaticRule = new DiagnosticDescriptor(
+            DiagnosticIds.ReferencedFieldInTestCaseSourceHasToBeStatic,
+            Title,
+            ReferencedFieldInTestCasesSourceIsNotStaticMessageFormat,
+            Category,
+            DiagnosticSeverity.Error, true,
+            ReferencedFieldInTestCasesSourceIsNotStaticDescription);
+
+
+        private static readonly LocalizableString ReferencedMethodInTestCasesSourceIsNotStaticMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString ReferencedMethodInTestCasesSourceIsNotStaticDescription =
+            new LocalizableResourceString(nameof(Resources.ReferencedMethodInTestCasesSourceIsNotStaticDescription), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor ReferencedMethodInTestCasesSourceIsNotStaticRule = new DiagnosticDescriptor(
+            DiagnosticIds.ReferencedMethodInTestCaseSourceHasToBeStatic,
+            Title,
+            ReferencedMethodInTestCasesSourceIsNotStaticMessageFormat,
+            Category,
+            DiagnosticSeverity.Error, true,
+            ReferencedMethodInTestCasesSourceIsNotStaticDescription);
 
 
         private static readonly LocalizableString ThrowsDeprecatedMessageFormat =

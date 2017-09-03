@@ -13,7 +13,7 @@ namespace SwitchToNUnit3
     [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AsyncVoidCodeFixProvider)), Shared]
     public class AsyncVoidCodeFixProvider : CodeFixProvider
     {
-        private static string Title { get; } = "Replace void with Task"; //todo localize
+        private static string Title { get; } = "Make static"; //todo localize
 
         public override async Task RegisterCodeFixesAsync(CodeFixContext context)
         {
@@ -40,7 +40,7 @@ namespace SwitchToNUnit3
             return Task.FromResult(document);
         }
 
-        public override ImmutableArray<string> FixableDiagnosticIds =>
+        public override ImmutableArray<string> FixableDiagnosticIds => 
             ImmutableArray.Create(DiagnosticIds.AsyncVoidIsDeprected);
     }
 }

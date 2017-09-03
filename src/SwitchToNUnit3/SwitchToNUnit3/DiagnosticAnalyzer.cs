@@ -14,9 +14,7 @@ namespace SwitchToNUnit3
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics
             => ImmutableArray.Create(
                 Rules.ExpectedExceptionDeprecatedRule,
-                Rules.TestFixtureSetUpAttributeDeprectedRule,
-                Rules.TestFixtureTearDownAttributeDeprecatedRule,
-                Rules.ReferencedTestCasesSourceIsNotStaticRule,
+                Rules.ReferencedPropertyInTestCasesSourceIsNotStaticRule,
                 Rules.ThrowsDeprecatedRule,
                 Rules.AsyncVoidIsDeprectedRule);
 
@@ -92,7 +90,7 @@ namespace SwitchToNUnit3
                 .OfType<AttributeArgumentSyntax>()
                 .FirstOrDefault();
             if (argument == null) return;
-            var nameOfTestcaseMember = GetName(argument);
+            var nameOfTestcaseMember = GetNameOrDefault(argument);
             if (string.IsNullOrWhiteSpace(nameOfTestcaseMember)) return;
 
             var containingClass = node.FindContainingClass();
@@ -107,7 +105,7 @@ namespace SwitchToNUnit3
                 var symbol = context.SemanticModel.GetDeclaredSymbol(property);
                 if (symbol.IsStatic) return;
 
-                context.ReportReferencedTestCaseSourceHasToBeStatic();
+                context.ReportReferencedPropertyInTestCaseSourceHasToBeStatic();
                 return;
             }
             var method = containingClass
@@ -118,7 +116,7 @@ namespace SwitchToNUnit3
             {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(method);
                 if (symbol.IsStatic) return;
-                context.ReportReferencedTestCaseSourceHasToBeStatic();
+                context.ReportReferencedMethodInTestCaseSourceHasToBeStatic();
                 return;
             }
             var field = containingClass
@@ -130,25 +128,24 @@ namespace SwitchToNUnit3
             {
                 var symbol = context.SemanticModel.GetDeclaredSymbol(field);
                 if (symbol.IsStatic) return;
-                context.ReportReferencedTestCaseSourceHasToBeStatic();
+                context.ReportReferencedFieldInTestCaseSourceHasToBeStatic();
             }
         }
 
-        private static string GetName(AttributeArgumentSyntax argument)
+        private static string GetNameOrDefault(AttributeArgumentSyntax argument)
         {
             //argument can be nameof(TestCases) or "TestCases"
-            if (argument.Expression is LiteralExpressionSyntax)
-            {
-                return (argument.Expression as LiteralExpressionSyntax).Token.ValueText;
-            }
+            var syntax = argument.Expression as LiteralExpressionSyntax;
+            if (syntax != null) return syntax.Token.ValueText;
+
             //search for argument of nameof()
-            return argument
+            var identifier = argument
                 .DescendantNodes()
                 .OfType<ArgumentSyntax>()
                 .SelectMany(@as => @as.DescendantNodes().OfType<IdentifierNameSyntax>())
-                .FirstOrDefault()
-                .Identifier
-                .Text;
+                .FirstOrDefault();
+
+            return identifier?.Identifier.Text;
         }
     }
 }

@@ -5,8 +5,16 @@ namespace SwitchToNUnit3.Extensions
 {
     public static class SyntaxNodeAnalysisContextExtension
     {
-        public static void ReportReferencedTestCaseSourceHasToBeStatic(this SyntaxNodeAnalysisContext context) {
-            context.ReportDiagnostic(Diagnostic.Create(Rules.ReferencedTestCasesSourceIsNotStaticRule, context.Node.GetLocation()));
+        public static void ReportReferencedPropertyInTestCaseSourceHasToBeStatic(this SyntaxNodeAnalysisContext context) {
+            context.ReportDiagnostic(Diagnostic.Create(Rules.ReferencedPropertyInTestCasesSourceIsNotStaticRule, context.Node.GetLocation()));
+        }
+
+        public static void ReportReferencedFieldInTestCaseSourceHasToBeStatic(this SyntaxNodeAnalysisContext context) {
+            context.ReportDiagnostic(Diagnostic.Create(Rules.ReferencedFieldInTestCasesSourceIsNotStaticRule, context.Node.GetLocation()));
+        }
+
+        public static void ReportReferencedMethodInTestCaseSourceHasToBeStatic(this SyntaxNodeAnalysisContext context) {
+            context.ReportDiagnostic(Diagnostic.Create(Rules.ReferencedMethodInTestCasesSourceIsNotStaticRule, context.Node.GetLocation()));
         }
 
         public static void ReportThrowsIsDeprecated(this SyntaxNodeAnalysisContext context) {
