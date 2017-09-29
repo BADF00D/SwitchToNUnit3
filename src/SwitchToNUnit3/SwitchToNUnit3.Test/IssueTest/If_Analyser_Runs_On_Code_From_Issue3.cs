@@ -46,7 +46,7 @@ namespace SwitchToNUnit3.Test.IssueTest
         {
             _diagnostics.Count().Should().Be(1);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedTestCaseSourceHasToBeStatic);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedPropertyInTestCaseSourceHasToBeStatic);
         }
     }
 }
