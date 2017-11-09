@@ -8,5 +8,6 @@
         public const string ReferencedTestCaseSourceHasToBeStatic = "STN3010";
         public const string ThrowsIsDeprecated = "STN3020";
         public const string AsyncVoidIsDeprected = "STN3030";
+        public const string TestFixtureUselessOnAbstractClass = "STN3040";
     }
 }

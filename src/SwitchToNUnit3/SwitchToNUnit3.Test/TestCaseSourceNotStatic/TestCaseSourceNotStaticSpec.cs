@@ -1,4 +1,5 @@
 ﻿using DisposableFixer.Test;
+using Microsoft.CodeAnalysis.Diagnostics;
 using NUnit.Framework;
 
 namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
@@ -6,7 +7,7 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
     [TestFixture]
     internal abstract class TestCaseSourceNotStaticSpec : Spec
     {
-        protected readonly SwitchToNUnit3Analyzer Sut;
+        protected DiagnosticAnalyzer Sut;
 
         protected TestCaseSourceNotStaticSpec()
         {

@@ -54,6 +54,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Rules.cs" />
+    <Compile Include="TestFixtureAbstractClassesAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />

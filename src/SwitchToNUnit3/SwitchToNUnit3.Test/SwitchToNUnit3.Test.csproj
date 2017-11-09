@@ -76,6 +76,8 @@
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_static_property.cs" />
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_non_static_property.cs" />
     <Compile Include="TestCaseSourceNotStatic\TestCaseSourceNotStaticSpec.cs" />
+    <Compile Include="TestFixture\If_TestFixture_is_on_non_abstract_class.cs" />
+    <Compile Include="TestFixture\If_TestFixture_is_on_abstract_class.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="Verifiers\CodeFixVerifier.cs" />
     <Compile Include="Verifiers\DiagnosticVerifier.cs" />

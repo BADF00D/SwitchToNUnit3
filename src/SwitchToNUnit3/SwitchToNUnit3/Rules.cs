@@ -114,5 +114,21 @@ namespace SwitchToNUnit3
             Category,
             DiagnosticSeverity.Error, true,
             AsyncVoidIsDeprectedDescription);
+
+        private static readonly LocalizableString TestFixtureOnAbstractClassIsUselessMessageFormat =
+            new LocalizableResourceString(nameof(Resources.TestFixtureOnAbstractClassIsUselessMessageFormat), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString TestFixtureOnAbstractClassIsUselessDescription =
+            new LocalizableResourceString(nameof(Resources.TestFixtureOnAbstractClassIsUselessDescription), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor TestFixtureOnAbstractClassIsUselessRule = new DiagnosticDescriptor(
+            DiagnosticIds.TestFixtureUselessOnAbstractClass,
+            Title,
+            TestFixtureOnAbstractClassIsUselessMessageFormat,
+            Category,
+            DiagnosticSeverity.Error, true,
+            TestFixtureOnAbstractClassIsUselessDescription);
     }
 }
