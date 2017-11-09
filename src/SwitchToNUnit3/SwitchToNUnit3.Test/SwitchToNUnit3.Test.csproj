@@ -57,6 +57,7 @@
     <Compile Include="Attribute\AttributeSpec.cs" />
     <Compile Include="Attribute\ExpectedExceptionAttribute_without_exception.cs" />
     <Compile Include="Attribute\ExpectedExceptionAttribute_with_exception.cs" />
+    <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue13.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue2.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue4.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue3.cs" />
