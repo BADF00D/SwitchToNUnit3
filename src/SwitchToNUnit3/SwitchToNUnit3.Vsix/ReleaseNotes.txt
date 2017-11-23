@@ -1,4 +1,7 @@
-﻿Release 0.3
+﻿Release 0.4
+* issue #14: Added CodeFix to change async void tests to async Task tests.
+
+Release 0.3
 * issue #12: Displays warning when using TestFixture-Attribute on abstract classes.
 * issue #13: Warning on non TestCaseSource attributes is no longer displayed.
 

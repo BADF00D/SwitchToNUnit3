@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-  <Metadata>
-    <Identity Id="SwitchToNUnit3.Microsoft.ac360001-3887-452e-8643-96d7cc9f0030" Version="0.3" Language="en-US" Publisher="David Störmer"/>
-    <DisplayName>SwitchToNUnit3</DisplayName>
-    <Description xml:space="preserve">An extension that notfies you about breaking changes in NUnit3, while working with NUnit2 and helps you using NUnit4 correktly.</Description>
-    <MoreInfo>https://github.com/BADF00D/SwitchToNUnit3</MoreInfo>
-    <License>License.txt</License>
-    <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
-    <Icon>icon.png</Icon>
-    <Tags>NUnit2, NUnit, NUnit3, upgrade, deprecated, roslyn, Testing, Unit Test</Tags>
-  </Metadata>
-  <Installation>
-    <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Community" />
-    <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Pro" />
-    <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Enterprise" />
-  </Installation>
-  <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-  </Dependencies>
-  <Assets>
-    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="SwitchToNUnit3" Path="|SwitchToNUnit3|"/>
-    <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="SwitchToNUnit3" Path="|SwitchToNUnit3|"/>
-  </Assets>
-  <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.26208.0,16.0)" DisplayName="Visual Studio core editor" />
-    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0.26208.0,16.0)" DisplayName="C# and Visual Basic Roslyn compilers" />
-    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[15.0.26208.0,16.0)" DisplayName="C# and Visual Basic" />
-  </Prerequisites>
+    <Metadata>
+        <Identity Id="SwitchToNUnit3.Microsoft.ac360001-3887-452e-8643-96d7cc9f0030" Version="0.4" Language="en-US" Publisher="David Störmer"/>
+        <DisplayName>SwitchToNUnit3</DisplayName>
+        <Description xml:space="preserve">An extension that notfies you about breaking changes in NUnit3, while working with NUnit2 and helps you using NUnit4 correktly.</Description>
+        <MoreInfo>https://github.com/BADF00D/SwitchToNUnit3</MoreInfo>
+        <License>License.txt</License>
+        <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
+        <Icon>icon.png</Icon>
+        <Tags>NUnit2, NUnit, NUnit3, upgrade, deprecated, roslyn, Testing, Unit Test</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Community" />
+        <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[14.0,16.0)" Id="Microsoft.VisualStudio.Enterprise" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="SwitchToNUnit3" Path="|SwitchToNUnit3|"/>
+        <Asset Type="Microsoft.VisualStudio.Analyzer" d:Source="Project" d:ProjectName="SwitchToNUnit3" Path="|SwitchToNUnit3|"/>
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.26208.0,16.0)" DisplayName="Visual Studio core editor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0.26208.0,16.0)" DisplayName="C# and Visual Basic Roslyn compilers" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[15.0.26208.0,16.0)" DisplayName="C# and Visual Basic" />
+    </Prerequisites>
 </PackageManifest>
