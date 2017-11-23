@@ -45,6 +45,7 @@
     <Compile Include="DiagnosticAnalyzer.cs" />
     <Compile Include="DiagnosticIds.cs" />
     <Compile Include="Extensions\NamespaceOrTypeSymbolExtension.cs" />
+    <Compile Include="Extensions\QualifiedNameSyntaxExtensions.cs" />
     <Compile Include="Extensions\SyntaxNodeAnalysisContextExtension.cs" />
     <Compile Include="Extensions\SyntaxNodeExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

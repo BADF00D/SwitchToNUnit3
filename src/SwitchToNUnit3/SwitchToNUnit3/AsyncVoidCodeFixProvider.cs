@@ -3,13 +3,11 @@ using System.Composition;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Editing;
 
 namespace SwitchToNUnit3
 {
@@ -44,12 +42,11 @@ namespace SwitchToNUnit3
                 .Select(uss => uss.Name as QualifiedNameSyntax)
                 .ToArray();
 
-            var usingForTaskAlreadyExists = root.DescendantNodes()
+            var importForTaskAlreadyExists = root.DescendantNodes()
                 .OfType<UsingDirectiveSyntax>()
                 .Select(uss => uss.Name as QualifiedNameSyntax)
                 .Where(qns => qns != null)
-                .Any(qns => (qns.Left as IdentifierNameSyntax)?.Identifier.Text == "NUnit" 
-                            && (qns.Right as IdentifierNameSyntax)?.Identifier.Text == "Framework");
+                .Any(qns => qns.Is("System", "Threading", "Tasks"));
             var oldAttribtues = oldmethod.AttributeLists;
 
 
@@ -67,22 +64,21 @@ namespace SwitchToNUnit3
                 oldmethod.ExpressionBody);
 
             var newroot = root.ReplaceNode(oldmethod, newmethod);
-            if (!usingForTaskAlreadyExists)
+            if (!importForTaskAlreadyExists)
             {
-                var oldUsings = root.DescendantNodes().OfType<UsingDirectiveSyntax>();
-                var usingTask = SyntaxFactory.UsingDirective(
-            SyntaxFactory.QualifiedName(
-                SyntaxFactory.QualifiedName(
-                    SyntaxFactory.IdentifierName("System"),
-                    SyntaxFactory.IdentifierName("Threading")),
-                SyntaxFactory.IdentifierName("Tasks")));
-                var newUsings = oldUsings.Concat(new [] { usingTask });
-
-                newroot = newroot.ReplaceSyntax(oldUsings, newUsings);
+                var oldUsings = newroot.DescendantNodes().OfType<UsingDirectiveSyntax>();
+                var importForTaskType = SyntaxFactory.UsingDirective(
+                    SyntaxFactory.QualifiedName(
+                        SyntaxFactory.QualifiedName(
+                            SyntaxFactory.IdentifierName("System"),
+                            SyntaxFactory.IdentifierName("Threading")),
+                        SyntaxFactory.IdentifierName("Tasks")));
+                
+                var x = oldUsings.Last();
+                newroot = newroot.InsertNodesAfter(x, new [] { importForTaskType });
             }
 
             return Task.FromResult(document.WithSyntaxRoot(newroot));
-
         }
 
         public override ImmutableArray<string> FixableDiagnosticIds => 
