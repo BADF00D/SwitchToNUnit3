@@ -24,5 +24,9 @@ namespace SwitchToNUnit3.Extensions
         public static void ReportAsyncVoidIsDeprecated(this SyntaxNodeAnalysisContext context) {
             context.ReportDiagnostic(Diagnostic.Create(Rules.AsyncVoidIsDeprectedRule, context.Node.GetLocation()));
         }
+
+        public static void ReportTestFixtureOnAbstractClassIsUseless(this SyntaxNodeAnalysisContext context) {
+            context.ReportDiagnostic(Diagnostic.Create(Rules.TestFixtureOnAbstractClassIsUselessRule, context.Node.GetLocation()));
+        }
     }
 }

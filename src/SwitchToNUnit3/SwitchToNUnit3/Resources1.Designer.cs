@@ -133,7 +133,24 @@ namespace SwitchToNUnit3 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Referenced TestCaseSource has to be static.
+        ///   Looks up a localized string similar to Abstract classes will not be run by NUnit, so this attribute can be removed.
+        /// </summary>
+        public static string TestFixtureOnAbstractClassIsUselessDescription {
+            get {
+                return ResourceManager.GetString("TestFixtureOnAbstractClassIsUselessDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TestFixture on abstract class is useless..
+        /// </summary>
+        public static string TestFixtureOnAbstractClassIsUselessMessageFormat {
+            get {
+                return ResourceManager.GetString("TestFixtureOnAbstractClassIsUselessMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// </summary>
         public static string ReferencedMethodInTestCasesSourceIsNotStaticMessageFormat {
             get {

@@ -57,6 +57,8 @@
     <Compile Include="Attribute\AttributeSpec.cs" />
     <Compile Include="Attribute\ExpectedExceptionAttribute_without_exception.cs" />
     <Compile Include="Attribute\ExpectedExceptionAttribute_with_exception.cs" />
+    <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue12.cs" />
+    <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue13.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue2.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue4.cs" />
     <Compile Include="IssueTest\If_Analyser_Runs_On_Code_From_Issue3.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_static_property.cs" />
     <Compile Include="TestCaseSourceNotStatic\If_TestCaseSource_references_a_non_static_property.cs" />
     <Compile Include="TestCaseSourceNotStatic\TestCaseSourceNotStaticSpec.cs" />
+    <Compile Include="TestFixture\If_TestFixture_is_on_non_abstract_class.cs" />
+    <Compile Include="TestFixture\If_TestFixture_is_on_abstract_class.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="Verifiers\CodeFixVerifier.cs" />
     <Compile Include="Verifiers\DiagnosticVerifier.cs" />

@@ -162,4 +162,10 @@
   <data name="ReferencedPropertyInTestCasesSourceIsNotStaticMessageFormat" xml:space="preserve">
     <value>Referenced TestCaseSource has to be static</value>
   </data>
+  <data name="TestFixtureOnAbstractClassIsUselessDescription" xml:space="preserve">
+    <value>Abstract classes will not be run by NUnit, so this attribute can be removed</value>
+  </data>
+  <data name="TestFixtureOnAbstractClassIsUselessMessageFormat" xml:space="preserve">
+    <value>TestFixture on abstract class is useless.</value>
+  </data>
 </root>

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="SwitchToNUnit3.Microsoft.ac360001-3887-452e-8643-96d7cc9f0030" Version="0.2" Language="en-US" Publisher="David Störmer"/>
+    <Identity Id="SwitchToNUnit3.Microsoft.ac360001-3887-452e-8643-96d7cc9f0030" Version="0.3" Language="en-US" Publisher="David Störmer"/>
     <DisplayName>SwitchToNUnit3</DisplayName>
-    <Description xml:space="preserve">An extension that notfies you about breaking changes in NUnit3, while working with NUnit2.</Description>
+    <Description xml:space="preserve">An extension that notfies you about breaking changes in NUnit3, while working with NUnit2 and helps you using NUnit4 correktly.</Description>
     <MoreInfo>https://github.com/BADF00D/SwitchToNUnit3</MoreInfo>
     <License>License.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>

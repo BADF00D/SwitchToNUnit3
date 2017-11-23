@@ -11,6 +11,11 @@ namespace SwitchToNUnit3
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class SwitchToNUnit3Analyzer : DiagnosticAnalyzer
     {
+        private const string Test = "Test";
+        private const string TestCaseData = "NUnit.Framework.TestCaseData";
+        private const string Throws = "Throws";
+        private const string TestCaseSourceAttribute = "NUnit.Framework.TestCaseSourceAttribute";
+
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics
             => ImmutableArray.Create(
                 Rules.ExpectedExceptionDeprecatedRule,
@@ -37,7 +42,7 @@ namespace SwitchToNUnit3
                     att =>
                         att.DescendantNodes()
                             .OfType<IdentifierNameSyntax>()
-                            .Any(ins => ins.Identifier.Text == "Test")))
+                            .Any(ins => ins.Identifier.Text == Test)))
             {
                 return;
             }
@@ -59,9 +64,9 @@ namespace SwitchToNUnit3
 
             var type = symbol?.ReturnType as INamedTypeSymbol;
             var fullname = type?.GetFullNameWithNameSpace();
-            if (fullname != "NUnit.Framework.TestCaseData") return;
+            if (fullname != TestCaseData) return;
             var ids = node.DescendantNodes().OfType<IdentifierNameSyntax>().ToArray();
-            var throws = ids.LastOrDefault(id => id.Identifier.Text == "Throws");
+            var throws = ids.LastOrDefault(id => id.Identifier.Text == Throws);
             if (throws != null)
             {
                 context.ReportThrowsIsDeprecated();
@@ -85,6 +90,11 @@ namespace SwitchToNUnit3
 
         private static void AnalyseTestCaseSourceAttribute(SyntaxNodeAnalysisContext context, AttributeSyntax node)
         {
+            var type = context.SemanticModel.GetTypeInfo(node);
+            if (type.Type == null) return;
+            var fullName = type.Type.GetFullNameWithNameSpace();
+            if (fullName != TestCaseSourceAttribute) return;
+
             var argument = node
                 .DescendantNodes()
                 .OfType<AttributeArgumentSyntax>()
@@ -138,14 +148,17 @@ namespace SwitchToNUnit3
             var syntax = argument.Expression as LiteralExpressionSyntax;
             if (syntax != null) return syntax.Token.ValueText;
 
+            }else if (argument.Expression is IdentifierNameSyntax)
+            {
+                return (argument.Expression as IdentifierNameSyntax).Identifier.Text;
             //search for argument of nameof()
             var identifier = argument
                 .DescendantNodes()
                 .OfType<ArgumentSyntax>()
                 .SelectMany(@as => @as.DescendantNodes().OfType<IdentifierNameSyntax>())
-                .FirstOrDefault();
-
-            return identifier?.Identifier.Text;
+                .FirstOrDefault()?
+                .Identifier
+                .Text ?? string.Empty;
         }
     }
 }
