@@ -20,8 +20,6 @@ namespace SwitchToNUnit3
             => ImmutableArray.Create(
                 Rules.ExpectedExceptionDeprecatedRule,
                 Rules.ReferencedPropertyInTestCasesSourceIsNotStaticRule,
-                Rules.ReferencedFieldInTestCasesSourceIsNotStaticRule,
-                Rules.ReferencedMethodInTestCasesSourceIsNotStaticRule,
                 Rules.ThrowsDeprecatedRule,
                 Rules.AsyncVoidIsDeprectedRule);
 
@@ -144,19 +142,36 @@ namespace SwitchToNUnit3
             }
         }
 
-        private static string GetNameOrDefault(AttributeArgumentSyntax argument) {
+        private static string GetNameOrDefault(AttributeArgumentSyntax argument)
+        {
             //argument can be nameof(TestCases) or "TestCases"
+<<<<<<< HEAD
             var syntax = argument.Expression as LiteralExpressionSyntax;
             if (syntax != null) return syntax.Token.ValueText;
 
+=======
+            if (argument.Expression is LiteralExpressionSyntax)
+            {
+                return (argument.Expression as LiteralExpressionSyntax).Token.ValueText;
+            }else if (argument.Expression is IdentifierNameSyntax)
+            {
+                return (argument.Expression as IdentifierNameSyntax).Identifier.Text;
+            }
+>>>>>>> master
             //search for argument of nameof()
             var identifier = argument
                 .DescendantNodes()
                 .OfType<ArgumentSyntax>()
                 .SelectMany(@as => @as.DescendantNodes().OfType<IdentifierNameSyntax>())
+<<<<<<< HEAD
                 .FirstOrDefault();
 
             return identifier?.Identifier.Text;
+=======
+                .FirstOrDefault()?
+                .Identifier
+                .Text ?? string.Empty;
+>>>>>>> master
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
         using NUnit.Framework;
         namespace Testnamespace {
             public class SomeTest {
-                [TestCaseSource(" + "Tests" + @")]
+                [TestCaseSource(" + "\"Tests\"" + @")]
                 [TestCaseSource(nameof(Tests))]
                 public void SomeMethod() { }
 
@@ -43,7 +43,8 @@ namespace SwitchToNUnit3.Test.TestCaseSourceNotStatic
         public void Then_there_should_be_two_Diagnostics() {
             _diagnostics.Count().Should().Be(2);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedPropertyInTestCaseSourceHasToBeStatic);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedMethodInTestCaseSourceHasToBeStatic);
+            _diagnostics[1].Id.Should().Be(DiagnosticIds.ReferencedMethodInTestCaseSourceHasToBeStatic);
         }
     }
 }
