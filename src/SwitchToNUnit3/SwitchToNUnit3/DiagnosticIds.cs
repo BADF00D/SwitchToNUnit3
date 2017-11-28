@@ -9,5 +9,6 @@
         public const string ThrowsIsDeprecated = "STN3020";
         public const string AsyncVoidIsDeprected = "STN3030";
         public const string TestFixtureUselessOnAbstractClass = "STN3040";
+        public const string ReferencedPropertyDoesNotExists = "STN3050";
     }
 }
