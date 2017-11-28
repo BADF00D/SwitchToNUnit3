@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -23,13 +24,43 @@ namespace SwitchToNUnit3
                 Rules.ReferencedFieldInTestCasesSourceIsNotStaticRule,
                 Rules.ReferencedMethodInTestCasesSourceIsNotStaticRule,
                 Rules.ThrowsDeprecatedRule,
-                Rules.AsyncVoidIsDeprectedRule);
+                Rules.AsyncVoidIsDeprectedRule,
+                Rules.ReferencedMemberDoesNotExistsRule);
 
         public override void Initialize(AnalysisContext context)
         {
             context.RegisterSyntaxNodeAction(AnalyseAttribute, SyntaxKind.Attribute);
+            context.RegisterSyntaxNodeAction(AnalyseMissingMemberInTestCaseSourceAttribute, SyntaxKind.Attribute);
             context.RegisterSyntaxNodeAction(AnalyseInvocationExpression, SyntaxKind.SimpleMemberAccessExpression);
             context.RegisterSyntaxNodeAction(AnalyseMethodDeclaration, SyntaxKind.MethodDeclaration);
+        }
+
+        private static void AnalyseMissingMemberInTestCaseSourceAttribute(SyntaxNodeAnalysisContext context)
+        {
+            var node = context.Node as AttributeSyntax;
+            if (node == null) return;
+
+            if (!node.IsTestCaseSourceAttribute()) return;
+
+           var memberName = node
+                .ArgumentList
+                .Arguments
+                .Select(GetNameOrDefault)
+                .FirstOrDefault();
+
+            var @class = node.FindContainingClass();
+            if (@class == null) return;
+            if (@class.DescendantNodes()
+                .OfType<PropertyDeclarationSyntax>()
+                .Any(pds => pds.Identifier.Text == memberName)) return;
+            if (@class.DescendantNodes()
+                .OfType<MethodDeclarationSyntax>()
+                .Any(mds => mds.Identifier.Text == memberName)) return;
+            var fieldDeclarationSyntaxs = @class.DescendantNodes().OfType<FieldDeclarationSyntax>().ToArray();
+            if(fieldDeclarationSyntaxs
+                .Any(fds => fds.Declaration.Variables.Any(vds => vds.Identifier.Text == memberName))) return;
+            
+            context.ReportDiagnostic(Diagnostic.Create(Rules.ReferencedMemberDoesNotExistsRule, node.GetLocation()));
         }
 
         private static void AnalyseMethodDeclaration(SyntaxNodeAnalysisContext context)
@@ -146,8 +177,10 @@ namespace SwitchToNUnit3
 
         private static string GetNameOrDefault(AttributeArgumentSyntax argument) {
             //argument can be nameof(TestCases) or "TestCases"
-            var syntax = argument.Expression as LiteralExpressionSyntax;
-            if (syntax != null) return syntax.Token.ValueText;
+            var literalExpression = argument.Expression as LiteralExpressionSyntax;
+            if (literalExpression != null) return literalExpression.Token.ValueText;
+            var identifierName = argument.Expression as IdentifierNameSyntax;
+            if (identifierName != null) return identifierName.Identifier.Text;
 
             //search for argument of nameof()
             var identifier = argument

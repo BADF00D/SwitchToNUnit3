@@ -126,5 +126,21 @@ namespace SwitchToNUnit3
             Category,
             DiagnosticSeverity.Error, true,
             TestFixtureOnAbstractClassIsUselessDescription);
+
+       private static readonly LocalizableString ReferencedMemberDoesNotExistsMessageFormat =
+            new LocalizableResourceString(nameof(Resources.ReferencedMemberDoesNotExistsXMessageFormat), Resources.ResourceManager,
+                typeof(Resources));
+
+        private static readonly LocalizableString ReferencedMemberDoesNotExistsDescription =
+            new LocalizableResourceString(nameof(Resources.ReferencedMemberDoesNotExistsDescription), Resources.ResourceManager,
+                typeof(Resources));
+
+        public static readonly DiagnosticDescriptor ReferencedMemberDoesNotExistsRule = new DiagnosticDescriptor(
+            DiagnosticIds.ReferencedMemberDoesNotExists,
+            Title,
+            ReferencedMemberDoesNotExistsMessageFormat,
+            Category,
+            DiagnosticSeverity.Error, true,
+            ReferencedMemberDoesNotExistsDescription);
     }
 }

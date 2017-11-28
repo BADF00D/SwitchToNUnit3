@@ -35,7 +35,7 @@ namespace MissingTestCasesProperty
         {
             _diagnostics.Count().Should().Be(1);
 
-            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedPropertyDoesNotExists);
+            _diagnostics[0].Id.Should().Be(DiagnosticIds.ReferencedMemberDoesNotExists);
         }
     }
 }

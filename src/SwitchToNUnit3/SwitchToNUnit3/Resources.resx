@@ -168,4 +168,10 @@
   <data name="TestFixtureOnAbstractClassIsUselessMessageFormat" xml:space="preserve">
     <value>TestFixture on abstract class is useless.</value>
   </data>
+  <data name="ReferencedMemberDoesNotExistsDescription" xml:space="preserve">
+    <value>TestCaseSource references a memeber that does not exists</value>
+  </data>
+  <data name="ReferencedMemberDoesNotExistsXMessageFormat" xml:space="preserve">
+    <value>Missing member {0}</value>
+  </data>
 </root>
